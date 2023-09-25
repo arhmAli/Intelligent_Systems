@@ -1,0 +1,50 @@
+[System]
+Name='automatic_braking'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Distance'
+Range=[0 100]
+NumMFs=3
+MF1='close':'trimf',[-50 -4.441e-16 50]
+MF2='moderate':'trimf',[0 50 100]
+MF3='fast':'trimf',[50 100 150]
+
+[Input2]
+Name='Speed'
+Range=[0 250]
+NumMFs=3
+MF1='slow':'trimf',[-125 -1.776e-15 125]
+MF2='moderate':'trimf',[0 125 250]
+MF3='fast':'trimf',[125 250 375]
+
+[Output1]
+Name='Break_force'
+Range=[0 100]
+NumMFs=3
+MF1='low':'trimf',[-50.78 -17 20.34]
+MF2='moderate':'trimf',[-4 34 76]
+MF3='strong':'linsmf',[76.9 77.4]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 3 (1) : 1
+1 1, 1 (1) : 1
+1 3, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 1 (1) : 1
+3 2, 1 (1) : 1
+1 3, 3 (1) : 1
+2 3, 2 (1) : 1
+1 3, 3 (1) : 1
+1 3, 3 (1) : 2
