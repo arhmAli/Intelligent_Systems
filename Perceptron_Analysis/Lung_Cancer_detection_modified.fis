@@ -1,0 +1,123 @@
+[System]
+Name='Lung_Cancer_detection_modified'
+Type='mamdani'
+Version=2.0
+NumInputs=11
+NumOutputs=2
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Age'
+Range=[0 100]
+NumMFs=2
+MF1='L_D_A':'trapmf',[0 0 55 60]
+MF2='H_D_A':'trapmf',[55 60 100 100]
+
+[Input2]
+Name='Smoking'
+Range=[0 10]
+NumMFs=2
+MF1='No':'trapmf',[0 0 5 5]
+MF2='Yes':'trapmf',[5.2 5.2 10 10]
+
+[Input3]
+Name='Hoarness_in_voice'
+Range=[0 8]
+NumMFs=3
+MF1='Low':'trapmf',[0 0 1 4]
+MF2='medium':'trapmf',[3 4 5 8]
+MF3='High':'trimf',[4.5 8 8]
+
+[Input4]
+Name='Chest_Pain'
+Range=[0 80]
+NumMFs=4
+MF1='Low':'trapmf',[0 0 7 10]
+MF2='medium':'trapmf',[7 25 30 43]
+MF3='High':'trapmf',[40 53 55 55]
+MF4='very_high':'trapmf',[53 55 80 80]
+
+[Input5]
+Name='Bone_Pain'
+Range=[0 30]
+NumMFs=3
+MF1='low':'trapmf',[0 5 8 10]
+MF2='medium':'trapmf',[10 13 18 20]
+MF3='high':'trapmf',[20 22.5 27.5 30]
+
+[Input6]
+Name='Weight_loss'
+Range=[0 10]
+NumMFs=4
+MF1='low':'trimf',[0 0 3]
+MF2='med':'trimf',[3 4.5 6]
+MF3='high':'trimf',[5 6.5 8]
+MF4='very_high':'trimf',[8 10 10]
+
+[Input7]
+Name='Shortness_Of_Breath'
+Range=[0 80]
+NumMFs=4
+MF1='low':'trapmf',[0 0 11 14]
+MF2='med':'trimf',[14 30.5 47]
+MF3='high':'trimf',[30.5 58 60]
+MF4='very_high':'trapmf',[58 60 80 80]
+
+[Input8]
+Name='Coughing_up_blood'
+Range=[0 80]
+NumMFs=4
+MF1='low':'trapmf',[0 0 11 14]
+MF2='med':'trimf',[14 30.5 47]
+MF3='high':'trimf',[30.5 58 60]
+MF4='very_high':'trapmf',[58 60 80 80]
+
+[Input9]
+Name='Persistant_Cough'
+Range=[0 80]
+NumMFs=4
+MF1='Low':'trapmf',[0 0 14 21]
+MF2='med':'trimf',[14 31 47]
+MF3='high':'trimf',[40 58 60]
+MF4='very_high':'trapmf',[58 60 80 80]
+
+[Input10]
+Name='Genetics'
+Range=[0 12.5]
+NumMFs=3
+MF1='stage_1':'trapmf',[-5.625 -0.625 0.625 2.5]
+MF2='stage_2':'trapmf',[2.5 4.625 6.875 7.5]
+MF3='stage_3':'trapmf',[7.5 10 11.5 12.72]
+
+[Input11]
+Name='Exposure_to_toxins'
+Range=[0 10]
+NumMFs=3
+MF1='low':'trapmf',[-4.5 -0.5 0.5 2.46478873239437]
+MF2='med':'trapmf',[2.49 4.5 5.5 7.01516793066089]
+MF3='high':'trapmf',[7 8.85 9.48537378114843 10.5]
+
+[Output1]
+Name='Stage'
+Range=[0 14]
+NumMFs=4
+MF1='no_cancer':'trimf',[0 0 2]
+MF2='stage_1':'trimf',[2 5 8]
+MF3='stage_2':'trimf',[8 10 12]
+MF4='stage_3':'trimf',[12 14 14]
+
+[Output2]
+Name='Treatment'
+Range=[0 9]
+NumMFs=4
+MF1='No_treat_req':'trimf',[0 0 2]
+MF2='surgery':'trimf',[2 3 5]
+MF3='chemo':'trimf',[5 6 7]
+MF4='radia':'trimf',[7 8 9]
+
+[Rules]
